@@ -1,19 +1,20 @@
 import { MouseEvent, useState } from 'react';
 
-import MenuIcon from '@mui/icons-material/Menu';
+import { Button } from '@mui/material';
 import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
-import Menu from '@mui/material/Menu';
+import MuiMenu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 import { defaultTab, pageKeysList } from 'src/constants';
 import { useActiveTab } from 'src/hooks';
-import { PageTypeKeys } from 'src/index.config';
+import { ActionMenuConfig, PageTypeKeys } from 'src/index.config';
 import paths from 'src/routes/paths';
 import { formatPageName } from 'src/utils';
 
-const SideMenu = () => {
+const Menu = ({ actionMenuContent }: ActionMenuConfig) => {
+  const { Icon, menuItems, title } = actionMenuContent;
+
   const { setActiveTab } = useActiveTab();
 
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
@@ -27,25 +28,36 @@ const SideMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleMenuItemClick = (pageKey: PageTypeKeys) => {
+  const isPageTypeKey = (key: string): key is PageTypeKeys => {
+    return pageKeysList.includes(key as PageTypeKeys);
+  };
+
+  const handleMenuItemClick = (title: string) => {
     handleCloseNavMenu();
-    setActiveTab(defaultTab);
-    navigate(`${paths[pageKey]}`);
+
+    if (isPageTypeKey(title)) {
+      setActiveTab(defaultTab);
+      navigate(paths[title]);
+    }
   };
 
   return (
     <Box sx={{ display: 'flex', flexGrow: 1 }}>
-      <IconButton
+      <Button
         size="large"
         aria-label="side menu"
         aria-controls="side-menu"
         aria-haspopup="true"
         onClick={handleOpenNavMenu}
         color="inherit"
+        sx={{
+          minWidth: 'auto',
+          padding: 0.5,
+        }}
       >
-        <MenuIcon />
-      </IconButton>
-      <Menu
+        <Icon /> {title && title}
+      </Button>
+      <MuiMenu
         id="side-menu"
         anchorEl={anchorElNav}
         anchorOrigin={{
@@ -61,16 +73,17 @@ const SideMenu = () => {
         onClose={handleCloseNavMenu}
         sx={{ display: 'block' }}
       >
-        {pageKeysList.map((pageKey) => (
-          <MenuItem key={pageKey} onClick={() => handleMenuItemClick(pageKey)}>
+        {menuItems.map(({ title, Icon }) => (
+          <MenuItem key={title} onClick={() => handleMenuItemClick(title)}>
             <Typography sx={{ textAlign: 'center' }}>
-              {formatPageName(pageKey)}
+              {Icon && <Icon />}
+              {formatPageName(title)}
             </Typography>
           </MenuItem>
         ))}
-      </Menu>
+      </MuiMenu>
     </Box>
   );
 };
 
-export default SideMenu;
+export default Menu;

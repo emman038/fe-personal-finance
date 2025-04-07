@@ -1,10 +1,11 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { pageKeysList } from 'src/constants';
+import { sideMenu } from 'src/content';
 import paths from 'src/routes/paths';
 import { formatPageName } from 'src/utils';
 
-import Component from './SideMenu';
+import Component from './Menu';
 
 const mockNavigate = jest.fn();
 
@@ -20,7 +21,8 @@ jest.mock('src/hooks', () => ({
 }));
 
 describe('SideMenu', () => {
-  const renderComponent = () => render(<Component />);
+  const renderComponent = () =>
+    render(<Component actionMenuContent={sideMenu} />);
 
   it('should open the Side Menu when the Icon is clicked', () => {
     renderComponent();

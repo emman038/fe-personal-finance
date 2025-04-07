@@ -1,12 +1,16 @@
 import AppBar from '@mui/material/AppBar';
 import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';
+import { sideMenu } from 'src/content/ActionMenuContent';
+import { useTheme } from 'src/hooks';
 
+import SideMenu from '../menu';
 import NavigationTabs from '../navigationTabs';
-import SideMenu from '../sideMenu';
 import UserMenu from '../userMenu';
 
 function NavBar() {
+  const { theme } = useTheme();
+
   return (
     <AppBar
       position="fixed"
@@ -16,11 +20,12 @@ function NavBar() {
         right: '0.5rem',
         width: 'calc(100% - 1rem)',
         borderRadius: '10px',
+        bgcolor: theme.navBar.bgColor,
       }}
     >
       <Container maxWidth="xl" sx={{ display: 'flex' }}>
         <Toolbar disableGutters sx={{ width: '100%' }}>
-          <SideMenu />
+          <SideMenu actionMenuContent={sideMenu} />
           <NavigationTabs />
           <UserMenu />
         </Toolbar>
