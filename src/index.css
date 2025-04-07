@@ -4,4 +4,6 @@ body,
   min-height: 100vh;
   margin: 0;
   background-color: #e0fbfc;
+  width: 100%;
+  overflow-x: hidden;
 }

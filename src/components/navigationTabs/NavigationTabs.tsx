@@ -10,7 +10,6 @@ const NavigationTabs = () => {
     <Box
       sx={{
         display: 'flex',
-        flexGrow: 2,
         justifyContent: 'center',
         mx: '0.25rem',
       }}
@@ -26,6 +25,7 @@ const NavigationTabs = () => {
             borderRadius: 0,
             mx: '0.5rem',
             position: 'relative',
+            minWidth: 'fit-content',
           }}
         >
           {activeTab === tabOption && (

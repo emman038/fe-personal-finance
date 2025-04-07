@@ -35,14 +35,14 @@ export type AppLayoutConfig = {
 
 export type ActionMenuConfig = {
   actionMenuContent: ActionMenuContentConfig;
+  isSideMenu?: boolean;
 };
 
-export type ThemeOption = 'light';
+type ThemeOption = 'light';
 
 export type ThemeConfig = {
-  bgColor: string;
   navBar: { bgColor: string };
-  actionMenu: { bgColor: string };
+  header: { bgColor: string };
 };
 
 export type ThemeMapping = {

@@ -18,6 +18,16 @@ jest.mock('src/hooks', () => ({
   useActiveTab: jest.fn().mockReturnValue({
     setActiveTab: jest.fn(),
   }),
+  useTheme: jest.fn().mockReturnValue({
+    theme: {
+      navBar: {
+        bgColor: '#3d5a80',
+      },
+      header: {
+        bgColor: '#98c1d9',
+      },
+    },
+  }),
 }));
 
 describe('SideMenu', () => {

@@ -9,7 +9,7 @@ export const ThemeContext = createContext<
 >(undefined);
 
 const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
-  const [theme, setTheme] = useState<ThemeConfig>(themeMapping['light']);
+  const [theme, setTheme] = useState<ThemeConfig>(themeMapping.light);
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>

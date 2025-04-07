@@ -1,3 +1,4 @@
+import { Box } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';
@@ -23,11 +24,32 @@ function NavBar() {
         bgcolor: theme.navBar.bgColor,
       }}
     >
-      <Container maxWidth="xl" sx={{ display: 'flex' }}>
+      <Container maxWidth="xl" sx={{ display: 'flex', p: '0' }}>
         <Toolbar disableGutters sx={{ width: '100%' }}>
-          <SideMenu actionMenuContent={sideMenu} />
-          <NavigationTabs />
-          <UserMenu />
+          <Box
+            flex={1}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <SideMenu actionMenuContent={sideMenu} isSideMenu={true} />
+          </Box>
+          <Box
+            flex={2}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <NavigationTabs />
+          </Box>
+          <Box
+            flex={1}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <UserMenu />
+          </Box>
         </Toolbar>
       </Container>
     </AppBar>

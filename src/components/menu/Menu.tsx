@@ -1,21 +1,22 @@
 import { MouseEvent, useState } from 'react';
 
-import { Button } from '@mui/material';
+import { Backdrop, Button } from '@mui/material';
 import Box from '@mui/material/Box';
 import MuiMenu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 import { defaultTab, pageKeysList } from 'src/constants';
-import { useActiveTab } from 'src/hooks';
+import { useActiveTab, useTheme } from 'src/hooks';
 import { ActionMenuConfig, PageTypeKeys } from 'src/index.config';
 import paths from 'src/routes/paths';
 import { formatPageName } from 'src/utils';
 
-const Menu = ({ actionMenuContent }: ActionMenuConfig) => {
+const Menu = ({ actionMenuContent, isSideMenu = false }: ActionMenuConfig) => {
   const { Icon, menuItems, title } = actionMenuContent;
 
   const { setActiveTab } = useActiveTab();
+  const { theme } = useTheme();
 
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const navigate = useNavigate();
@@ -42,7 +43,9 @@ const Menu = ({ actionMenuContent }: ActionMenuConfig) => {
   };
 
   return (
-    <Box sx={{ display: 'flex', flexGrow: 1 }}>
+    <Box
+      sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+    >
       <Button
         size="large"
         aria-label="side menu"
@@ -52,11 +55,19 @@ const Menu = ({ actionMenuContent }: ActionMenuConfig) => {
         color="inherit"
         sx={{
           minWidth: 'auto',
-          padding: 0.5,
+          display: 'flex',
+          textAlign: 'center',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: 0.5,
+          p: 1,
+          bgcolor: isSideMenu ? 'transparent' : theme.header.bgColor,
         }}
       >
         <Icon /> {title && title}
       </Button>
+      <Backdrop open={Boolean(anchorElNav)} />
       <MuiMenu
         id="side-menu"
         anchorEl={anchorElNav}
@@ -75,7 +86,18 @@ const Menu = ({ actionMenuContent }: ActionMenuConfig) => {
       >
         {menuItems.map(({ title, Icon }) => (
           <MenuItem key={title} onClick={() => handleMenuItemClick(title)}>
-            <Typography sx={{ textAlign: 'center' }}>
+            <Typography
+              sx={{
+                display: 'flex',
+                textAlign: 'center',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 0.5,
+                px: 1,
+                py: 1,
+              }}
+            >
               {Icon && <Icon />}
               {formatPageName(title)}
             </Typography>
