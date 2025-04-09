@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement, ReactNode } from 'react';
 import React from 'react';
 
 import { SvgIconComponent } from '@mui/icons-material';
@@ -30,7 +30,7 @@ export type ThemeContextProviderConfig = {
 
 export type AppLayoutConfig = {
   heading: string;
-  children: ReactElement;
+  children: ReactNode;
 };
 
 export type ActionMenuConfig = {
@@ -40,10 +40,10 @@ export type ActionMenuConfig = {
 
 type ThemeOption = 'light';
 
-export type ThemeConfig = {
+export interface ThemeConfig {
   bgColor: string;
   avatarBgColor: string;
-};
+}
 
 export type ThemeMapping = {
   [key in ThemeOption]: ThemeConfig;
