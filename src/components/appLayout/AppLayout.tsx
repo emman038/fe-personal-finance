@@ -1,14 +1,13 @@
-import { Box } from '@mui/material';
 import { AppLayoutConfig } from 'src/index.config';
 
-import { StyledContainer } from './AppLayout.styled';
+import { MainSection, StyledContainer } from './AppLayout.styled';
 import Header from '../header';
 
 const AppLayout = ({ heading, children }: AppLayoutConfig) => {
   return (
     <StyledContainer>
       <Header heading={heading} />
-      <Box>{children}</Box>
+      <MainSection component="main">{children}</MainSection>
     </StyledContainer>
   );
 };

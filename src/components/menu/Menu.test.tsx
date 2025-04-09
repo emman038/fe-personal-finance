@@ -6,6 +6,7 @@ import paths from 'src/routes/paths';
 import { formatPageName } from 'src/utils';
 
 import Component from './Menu';
+import ThemeContextProvider from '../themeContextProvider';
 
 const mockNavigate = jest.fn();
 
@@ -20,19 +21,18 @@ jest.mock('src/hooks', () => ({
   }),
   useTheme: jest.fn().mockReturnValue({
     theme: {
-      navBar: {
-        bgColor: '#3d5a80',
-      },
-      header: {
-        bgColor: '#98c1d9',
-      },
+      bgColor: '#3d5a80',
     },
   }),
 }));
 
 describe('SideMenu', () => {
   const renderComponent = () =>
-    render(<Component actionMenuContent={sideMenu} />);
+    render(
+      <ThemeContextProvider>
+        <Component actionMenuContent={sideMenu} />
+      </ThemeContextProvider>,
+    );
 
   it('should open the Side Menu when the Icon is clicked', () => {
     renderComponent();

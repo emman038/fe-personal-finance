@@ -21,7 +21,7 @@ function NavBar() {
         right: '0.5rem',
         width: 'calc(100% - 1rem)',
         borderRadius: '10px',
-        bgcolor: theme.navBar.bgColor,
+        bgcolor: theme.bgColor,
       }}
     >
       <Container maxWidth="xl" sx={{ display: 'flex', p: '0' }}>

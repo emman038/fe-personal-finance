@@ -4,9 +4,15 @@ import userEvent from '@testing-library/user-event';
 import { menuOptions } from 'src/constants';
 
 import Component from './UserMenu';
+import ThemeContextProvider from '../themeContextProvider';
 
 describe('UserMenu', () => {
-  const renderComponent = () => render(<Component />);
+  const renderComponent = () =>
+    render(
+      <ThemeContextProvider>
+        <Component />
+      </ThemeContextProvider>,
+    );
 
   it('should open the User Menu when the Icon is clicked', () => {
     renderComponent();

@@ -7,16 +7,19 @@ import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 import { defaultTab, pageKeysList } from 'src/constants';
-import { useActiveTab, useTheme } from 'src/hooks';
+import { useActiveTab } from 'src/hooks';
 import { ActionMenuConfig, PageTypeKeys } from 'src/index.config';
 import paths from 'src/routes/paths';
 import { formatPageName } from 'src/utils';
 
+import { HeaderButton } from './Menu.styled';
+
 const Menu = ({ actionMenuContent, isSideMenu = false }: ActionMenuConfig) => {
+  const StyledButton = isSideMenu ? Button : HeaderButton;
+
   const { Icon, menuItems, title } = actionMenuContent;
 
   const { setActiveTab } = useActiveTab();
-  const { theme } = useTheme();
 
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const navigate = useNavigate();
@@ -46,7 +49,7 @@ const Menu = ({ actionMenuContent, isSideMenu = false }: ActionMenuConfig) => {
     <Box
       sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
     >
-      <Button
+      <StyledButton
         size="large"
         aria-label="side menu"
         aria-controls="side-menu"
@@ -62,11 +65,10 @@ const Menu = ({ actionMenuContent, isSideMenu = false }: ActionMenuConfig) => {
           justifyContent: 'center',
           gap: 0.5,
           p: 1,
-          bgcolor: isSideMenu ? 'transparent' : theme.header.bgColor,
         }}
       >
         <Icon /> {title && title}
-      </Button>
+      </StyledButton>
       <Backdrop open={Boolean(anchorElNav)} />
       <MuiMenu
         id="side-menu"

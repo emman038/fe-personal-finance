@@ -1,7 +1,8 @@
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import { createMenu, editMenu } from 'src/content';
 
 import Menu from '../menu';
+import { PageTitle } from './Header.styled';
 
 const Header = ({ heading }: { heading: string }) => {
   return (
@@ -11,7 +12,7 @@ const Header = ({ heading }: { heading: string }) => {
       </Box>
 
       <Box flex={2} display="flex" justifyContent="center" alignItems="center">
-        <Typography variant="h2">{heading}</Typography>
+        <PageTitle variant="h2">{heading}</PageTitle>
       </Box>
 
       <Box flex={1} display="flex" justifyContent="center" alignItems="center">

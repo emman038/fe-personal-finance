@@ -41,8 +41,8 @@ export type ActionMenuConfig = {
 type ThemeOption = 'light';
 
 export type ThemeConfig = {
-  navBar: { bgColor: string };
-  header: { bgColor: string };
+  bgColor: string;
+  avatarBgColor: string;
 };
 
 export type ThemeMapping = {
