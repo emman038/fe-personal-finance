@@ -3,7 +3,7 @@ import ProjectionVsActual from 'src/components/projectionVsActual';
 import { IncomeContent } from 'src/content';
 
 const Income = () => {
-  //TODO - Will come from BE
+  //TODO - Will come from BE API
   const hasMultipleIncomeSources = true;
   const getsWeeklyPay = true;
 
