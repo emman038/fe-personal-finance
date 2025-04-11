@@ -6,6 +6,7 @@ import { SvgIconComponent } from '@mui/icons-material';
 export const pageType = {
   HOME_PAGE: 'HOME_PAGE',
   INCOME: 'INCOME',
+  EXPENSE: 'EXPENSE',
 } as const;
 
 export type PageTypeKeys = keyof typeof pageType;
@@ -50,9 +51,19 @@ export type ThemeMapping = {
 };
 
 export type ActionMenuContentConfig = {
-  title?: 'EDIT' | 'ADD';
+  title?: 'EDIT' | 'CREATE';
   menuItems: ActionOption[];
   Icon: SvgIconComponent;
 };
 
 export type ActionOption = { Icon?: SvgIconComponent; title: string };
+
+export type EntryContent = {
+  heading: string;
+  graphContent: GraphContent;
+};
+
+export type GraphContent = {
+  graphTitle: string;
+  graphLabels: string[];
+};

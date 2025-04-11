@@ -57,7 +57,6 @@ const Menu = ({ actionMenuContent, isSideMenu = false }: ActionMenuConfig) => {
         onClick={handleOpenNavMenu}
         color="inherit"
         sx={{
-          minWidth: 'auto',
           display: 'flex',
           textAlign: 'center',
           flexDirection: 'column',

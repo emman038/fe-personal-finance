@@ -6,10 +6,10 @@ export const StyledContainer = styled(Container)`
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  padding-top: 7rem;
+  margin-top: 7rem;
 
   @media (max-width: 768px) {
-    padding-top: 5.5rem !important;
+    margin-top: 5.5rem !important;
   }
 `;
 
@@ -17,6 +17,7 @@ export const MainSection = styled(Box)<{ component: string }>`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 3rem;
+  margin-bottom: 5rem;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;

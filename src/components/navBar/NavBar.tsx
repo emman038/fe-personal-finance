@@ -2,7 +2,7 @@ import { Box } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';
-import { sideMenu } from 'src/content/ActionMenuContent';
+import { sideMenu } from 'src/content/actionMenuContent/ActionMenuContent';
 import { useTheme } from 'src/hooks';
 
 import SideMenu from '../menu';

@@ -33,7 +33,7 @@ export const editMenu: ActionMenuContentConfig = {
 };
 
 export const createMenu: ActionMenuContentConfig = {
-  title: 'ADD',
+  title: 'CREATE',
   menuItems: createMenuItems,
   Icon: AddIcon,
 };

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -12,6 +10,9 @@ import {
   ChartOptions,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import { GraphContent } from 'src/index.config';
+
+import { GraphContainer, GraphTitle } from '../../index.styled';
 
 ChartJS.register(
   CategoryScale,
@@ -22,9 +23,15 @@ ChartJS.register(
   Legend,
 );
 
-const ProjectionVsActual = () => {
+const ProjectionVsActual = ({
+  graphContent,
+}: {
+  graphContent: GraphContent;
+}) => {
+  const { graphTitle, graphLabels } = graphContent;
+
   const data = {
-    labels: ['TOTAL'],
+    labels: [...graphLabels],
     datasets: [
       {
         label: 'Live Projected',
@@ -50,12 +57,11 @@ const ProjectionVsActual = () => {
     ],
   };
 
-  // Chart options
   const options: ChartOptions<'bar'> = {
     responsive: true,
     plugins: {
       legend: {
-        position: 'top' as const,
+        position: 'bottom',
       },
       tooltip: {
         callbacks: {
@@ -72,21 +78,19 @@ const ProjectionVsActual = () => {
         ticks: {
           callback: (tickValue: string | number) => `${Number(tickValue)} GBP`,
         },
+        grid: {
+          color: (context) =>
+            context.tick.value === 0 ? 'black' : 'rgba(0,0,0,0.1)',
+        },
       },
     },
   };
 
   return (
-    <section
-      style={{
-        border: '0.1rem solid black',
-        borderRadius: '5%',
-        padding: '0.5rem',
-      }}
-    >
-      <h2>Income Breakdown</h2>
+    <GraphContainer>
+      <GraphTitle>{graphTitle}</GraphTitle>
       <Bar data={data} options={options} />
-    </section>
+    </GraphContainer>
   );
 };
 
