@@ -15,9 +15,7 @@ const Header = ({ heading }: { heading: string }) => {
         <PageTitle variant="h2">{heading}</PageTitle>
       </Box>
 
-      <Box flex={1} display="flex" justifyContent="center" alignItems="center">
-        <Menu actionMenuContent={editMenu} />
-      </Box>
+      <Menu actionMenuContent={editMenu} />
     </Box>
   );
 };

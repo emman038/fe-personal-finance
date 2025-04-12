@@ -12,6 +12,8 @@ const NavigationTabs = () => {
         display: 'flex',
         justifyContent: 'center',
         mx: '0.25rem',
+        flex: 2,
+        alignItems: 'center',
       }}
     >
       {tabOptions.map((tabOption) => (

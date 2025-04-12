@@ -25,7 +25,12 @@ const UserMenu = () => {
 
   return (
     <Box
-      sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flex: '1',
+      }}
     >
       <Tooltip title="Open Account Settings">
         <IconButton

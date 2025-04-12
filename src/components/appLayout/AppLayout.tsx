@@ -1,14 +1,14 @@
 import { AppLayoutConfig } from 'src/index.config';
 
-import { MainSection, StyledContainer } from './AppLayout.styled';
+import { MainSection, PageContainer } from './AppLayout.styled';
 import Header from '../header';
 
 const AppLayout = ({ heading, children }: AppLayoutConfig) => {
   return (
-    <StyledContainer>
+    <PageContainer>
       <Header heading={heading} />
       <MainSection component="main">{children}</MainSection>
-    </StyledContainer>
+    </PageContainer>
   );
 };
 

@@ -1,7 +1,7 @@
 import { Box, Container } from '@mui/material';
 import styled from 'styled-components';
 
-export const StyledContainer = styled(Container)`
+export const PageContainer = styled(Container)`
   min-height: 100vh;
   display: flex;
   flex-direction: column;

@@ -1,7 +1,6 @@
 import { MouseEvent, useState } from 'react';
 
-import { Backdrop, Button } from '@mui/material';
-import Box from '@mui/material/Box';
+import { Backdrop, Box, Button } from '@mui/material';
 import MuiMenu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
@@ -46,9 +45,7 @@ const Menu = ({ actionMenuContent, isSideMenu = false }: ActionMenuConfig) => {
   };
 
   return (
-    <Box
-      sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-    >
+    <Box flex={1} display="flex" justifyContent="center" alignItems="center">
       <StyledButton
         size="large"
         aria-label="side menu"
