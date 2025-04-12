@@ -19,10 +19,10 @@ export default [
   },
   {
     languageOptions: {
-      parser: tsParser, // Specifies the ESLint parser
+      parser: tsParser,
       parserOptions: {
-        ecmaVersion: 2020, // Allows for the parsing of modern ECMAScript features
-        sourceType: 'module', // Allows for the use of imports
+        ecmaVersion: 2020,
+        sourceType: 'module',
         project: ['*/tsconfig.json'],
         tsconfigRootDir: __dirname,
       },

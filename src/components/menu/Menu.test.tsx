@@ -1,10 +1,12 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { pageKeysList } from 'src/constants';
+import { sideMenu } from 'src/content';
 import paths from 'src/routes/paths';
 import { formatPageName } from 'src/utils';
 
-import Component from './SideMenu';
+import Component from './Menu';
+import ThemeContextProvider from '../themeContextProvider';
 
 const mockNavigate = jest.fn();
 
@@ -17,10 +19,20 @@ jest.mock('src/hooks', () => ({
   useActiveTab: jest.fn().mockReturnValue({
     setActiveTab: jest.fn(),
   }),
+  useTheme: jest.fn().mockReturnValue({
+    theme: {
+      bgColor: '#3d5a80',
+    },
+  }),
 }));
 
 describe('SideMenu', () => {
-  const renderComponent = () => render(<Component />);
+  const renderComponent = () =>
+    render(
+      <ThemeContextProvider>
+        <Component actionMenuContent={sideMenu} />
+      </ThemeContextProvider>,
+    );
 
   it('should open the Side Menu when the Icon is clicked', () => {
     renderComponent();

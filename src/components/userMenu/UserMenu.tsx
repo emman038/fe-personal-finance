@@ -2,15 +2,17 @@ import { useState, MouseEvent } from 'react';
 
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
-import { grey } from '@mui/material/colors';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import { menuOptions } from 'src/constants';
+import { useTheme } from 'src/hooks';
 
 const UserMenu = () => {
+  const { theme } = useTheme();
+
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
   const handleOpenUserMenu = (event: MouseEvent<HTMLElement>) => {
@@ -22,7 +24,14 @@ const UserMenu = () => {
   };
 
   return (
-    <Box sx={{ display: 'flex', flexGrow: 1, justifyContent: 'flex-end' }}>
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flex: '1',
+      }}
+    >
       <Tooltip title="Open Account Settings">
         <IconButton
           onClick={handleOpenUserMenu}
@@ -34,7 +43,7 @@ const UserMenu = () => {
         >
           <Avatar
             alt="Picture of account holder"
-            sx={{ color: 'black', bgcolor: grey[400] }}
+            sx={{ color: 'black', bgcolor: theme.avatarBgColor }}
           >
             E
           </Avatar>
